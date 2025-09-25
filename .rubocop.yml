@@ -1,0 +1,292 @@
+require:
+  - rubocop-performance
+  - rubocop-rails
+  - rubocop-minitest
+
+AllCops:
+  TargetRubyVersion: 3.0
+  TargetRailsVersion: 7.1
+  NewCops: enable
+
+Bundler:
+  Enabled: true
+
+Bundler/OrderedGems:
+  Enabled: false
+
+Gemspec:
+  Enabled: false
+
+Layout:
+  Enabled: true
+
+Layout/AccessModifierIndentation:
+  Enabled: true
+  EnforcedStyle: outdent
+
+Layout/LineLength:
+  Enabled: true
+  AllowedPatterns: ['\A\s+test \".+\" do\z', '\A\s*\#']
+  Max: 200
+
+Layout/SpaceBeforeSemicolon:
+  Enabled: true
+
+Layout/SpaceInsideBlockBraces:
+  Enabled: false
+
+Layout/SpaceInsideHashLiteralBraces:
+  Enabled: true
+  EnforcedStyle: no_space
+
+Layout/TrailingWhitespace:
+  Enabled: true
+  AllowInHeredoc: true
+
+Lint:
+  Enabled: true
+
+Lint/AmbiguousOperatorPrecedence:
+  Enabled: false
+
+Lint/SendWithMixinArgument:
+  Enabled: false
+
+Metrics:
+  Enabled: false
+
+Minitest:
+  Enabled: true
+
+Minitest/AssertPredicate:
+  Enabled: false
+
+Minitest/AssertRaisesCompoundBody:
+  Enabled: false
+
+Minitest/MultipleAssertions:
+  Enabled: false
+
+Minitest/RefuteFalse:
+  Enabled: false
+
+Naming:
+  Enabled: true
+
+Naming/AccessorMethodName:
+  Enabled: false
+
+Naming/BinaryOperatorParameterName:
+  Enabled: false
+
+Naming/PredicateName:
+  Enabled: false
+
+Naming/VariableNumber:
+  Enabled: false
+
+Performance:
+  Enabled: true
+
+Performance/ChainArrayAllocation:
+  Enabled: false
+
+Performance/MapCompact:
+  Enabled: false
+
+Rails:
+  Enabled: true
+
+Rails/ActionControllerTestCase:
+  Enabled: false
+
+Rails/ApplicationJob:
+  Enabled: false
+
+Rails/ApplicationRecord:
+  Enabled: false
+
+Rails/Blank:
+  Enabled: false
+
+Rails/CompactBlank:
+  Enabled: false
+
+Rails/CreateTableWithTimestamps:
+  Enabled: false
+
+Rails/Delegate:
+  Enabled: false
+
+Rails/EnvironmentVariableAccess:
+  Enabled: false
+
+Rails/FilePath:
+  Enabled: false
+
+Rails/HelperInstanceVariable:
+  Enabled: false
+
+Rails/InverseOf:
+  Enabled: false
+
+Rails/NegateInclude:
+  Enabled: false
+
+Rails/OutputSafety:
+  Enabled: false
+
+Rails/RedundantForeignKey:
+  Enabled: false
+
+Rails/RedundantPresenceValidationOnBelongsTo:
+  Enabled: false
+
+Rails/SkipsModelValidations:
+  Enabled: false
+
+Rails/UniqueValidationWithoutIndex:
+  Enabled: false
+
+Rails/TransactionExitStatement:
+  Enabled: true
+
+Security:
+  Enabled: true
+
+Style:
+  Enabled: true
+
+Style/AutoResourceCleanup:
+  Enabled: false
+
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+Style/ColonMethodCall:
+  Enabled: false
+
+Style/CommentAnnotation:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Style/EmptyCaseCondition:
+  Enabled: false
+
+Style/EmptyElse:
+  EnforcedStyle: empty
+
+Style/ExpandPathArguments:
+  Enabled: true
+  Exclude:
+    - test/**/*
+
+Style/FormatString:
+  EnforcedStyle: sprintf
+
+Style/FrozenStringLiteralComment:
+  Enabled: true
+  EnforcedStyle: always
+
+Style/FormatStringToken:
+  Enabled: false
+
+Style/GlobalStdStream:
+  Enabled: false
+
+Style/HashSyntax:
+  Enabled: true
+  EnforcedStyle: no_mixed_keys
+
+Style/HashTransformKeys:
+  Enabled: true
+
+Style/HashTransformValues:
+  Enabled: true
+
+Style/MethodCallWithArgsParentheses:
+  Enabled: true
+  AllowParenthesesInMultilineCall: true
+  AllowParenthesesInChaining: true
+  AllowParenthesesInCamelCaseMethod: true
+  AllowParenthesesInStringInterpolation: true
+  AllowedMethods:
+    - abort
+    - assert
+    - basename
+    - chdir
+    - debug_log
+    - define
+    - delete
+    - desc
+    - exist?
+    - exit
+    - fatal_system
+    - include
+    - include?
+    - mkdir
+    - mktmpdir
+    - puts
+    - raise
+    - remove_entry_secure
+    - require
+    - require_relative
+    - returncode
+    - separator
+    - should
+    - should_not
+    - sleep
+    - start_with?
+    - step
+    - task
+    - wait
+    - warn
+    - write
+    - yield
+    - alias_method
+
+Style/NumericPredicate:
+  Enabled: true
+  AllowedMethods: [==]
+  EnforcedStyle: predicate
+
+Style/OptionHash:
+  Enabled: true
+  SuspiciousParamNames:
+    - options
+    - api_options
+    - opts
+    - args
+    - params
+    - parameters
+    - settings
+
+Style/OptionalBooleanParameter:
+  Enabled: false
+
+Style/RaiseArgs:
+  Enabled: false
+
+Style/RedundantBegin:
+  Enabled: false
+
+Style/ReturnNil:
+  Enabled: false
+
+Style/SymbolArray:
+  Enabled: false
+
+Style/TrailingCommaInArrayLiteral:
+  EnforcedStyleForMultiline: consistent_comma
+
+Style/WordArray:
+  Enabled: false
+
+Style/RedundantReturn:
+  AllowMultipleReturnValues: true
+
+Layout/BeginEndAlignment:
+  Enabled: true
+  EnforcedStyleAlignWith: begin
