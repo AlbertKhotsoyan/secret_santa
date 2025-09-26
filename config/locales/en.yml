@@ -1,2 +1,13 @@
 en:
-  label_secret_santa: Secret Santa
+  label_secret_santa: "Secret Santa"
+  secret_santa:
+    errors:
+      not_enough_participants: "Not enough participants (need at least 2 users with email)."
+      no_assignments: "No assignments exist — draw first."
+    messages:
+      draw_success: "Draw completed."
+      emails_sent: "%{count} emails sent."
+      deleted: "Game deleted."
+    mailer:
+      assignment_subject: "Secret Santa assignment for %{game}"
+      assignment_body_default: "Hello {{giver_name}},\n\nYou are the Secret Santa for: {{receiver_name}} ({{receiver_email}})\n\nGame: {{game_name}}\n\nHave fun!"

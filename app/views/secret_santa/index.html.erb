@@ -1,0 +1,29 @@
+<h2><%= l(:label_secret_santa) %></h2>
+
+<p><%= link_to l(:button_create), action: :new %></p>
+
+<table class="list issues">
+  <thead>
+  <tr>
+    <th><%= l(:field_id) %></th>
+    <th><%= l(:field_name) %></th>
+    <th>Group</th>
+    <th><%= l(:field_created_on) %></th>
+    <th>&nbsp;</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @games.each do |g| %>
+    <tr>
+      <td><%= g.id %></td>
+      <td><%= link_to h(g.name), action: :show, id: g.id %></td>
+      <td><%= h(Group.find_by(id: g.group_id)&.lastname) %></td>
+      <td><%= format_time(g.created_at) %></td>
+      <td>
+        <%= link_to 'Show', action: :show, id: g.id %> |
+        <%= link_to 'Delete', {action: :destroy, id: g.id}, method: :delete, data: { confirm: 'Delete?' } %>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

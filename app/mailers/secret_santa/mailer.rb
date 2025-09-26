@@ -1,0 +1,25 @@
+# frozen_string_literal: true
+
+class SecretSanta::Mailer < ApplicationMailer
+  default from: Setting.mail_from
+
+  def assignment_email
+    @game = params[:game]
+    @assignment = params[:assignment]
+    @giver = @assignment.giver
+    @receiver = @assignment.receiver
+
+    subject_template = I18n.t('secret_santa.mailer.assignment_subject', game: @game.name)
+    body_template = @game.message_template.presence || I18n.t('secret_santa.mailer.assignment_body_default')
+
+    body = body_template.gsub('{{giver_name}}', @giver.name.to_s)
+                        .gsub('{{receiver_name}}', @receiver.name.to_s)
+                        .gsub('{{receiver_email}}', @receiver.mail.to_s)
+                        .gsub('{{game_name}}', @game.name.to_s)
+
+    mail(to: @giver.mail, subject: subject_template) do |format|
+      format.text { render(plain: body) }
+      format.html { render(html: "<pre>#{ERB::Util.html_escape(body)}</pre>".html_safe) }
+    end
+  end
+end
