@@ -61,19 +61,17 @@ class SecretSantaController < ApplicationController
       redirect_to(action: :show, id: @game.id) and return
     end
 
-    sent = 0
+    enqueued = 0
     @game.assignments.includes(:giver, :receiver).find_each do |assignment|
       next unless assignment.giver && assignment.receiver
       next if assignment.giver.mail.blank?
 
-      SecretSanta::Mailer.with(
-        game: @game,
-        assignment: assignment
-      ).assignment_email.deliver_now
-      sent += 1
+      # enqueue job
+      SecretSanta::AssignmentEmailJob.perform_later(@game.id, assignment.id)
+      enqueued += 1
     end
 
-    flash[:notice] = I18n.t('secret_santa.messages.emails_sent', count: sent)
+    flash[:notice] = I18n.t('secret_santa.messages.emails_sent', count: enqueued)
     redirect_to(action: :show, id: @game.id)
   end
 
