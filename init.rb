@@ -6,7 +6,7 @@ Redmine::Plugin.register(:secret_santa) do
   name 'Secret Santa'
   author 'Albert Khotsoyan'
   description 'Play Secret Santa with Redmine group users'
-  version '1.0.1'
+  version '1.0.2'
   author_url 'albert.khotsoyan@gmail.com'
 
   project_module :secret_santa do
