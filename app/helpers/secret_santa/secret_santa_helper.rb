@@ -1,4 +1,6 @@
 # frozen_string_literal: true
 
-module SecretSantaHelper
+module SecretSanta
+  module SecretSantaHelper
+  end
 end

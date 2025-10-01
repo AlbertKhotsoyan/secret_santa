@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class SecretSantaController < ApplicationController
+  include ApplicationHelper
+
   before_action :require_login
   before_action :find_game, only: [:show, :draw, :send_emails, :destroy]
   before_action :authorize_secret_santa
