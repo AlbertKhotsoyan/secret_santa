@@ -7,6 +7,7 @@ Secret Santa Redmine plugin
 3) Restart Redmine
 
 Use:
+
 - Top menu -> Secret Santa
 - Create a game: choose group (group must have at least 2 users with emails)
 - Open game -> Run draw -> Send emails
