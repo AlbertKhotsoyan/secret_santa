@@ -10,13 +10,5 @@ module SecretSanta
     validates :id, presence: true, uniqueness: true
     validates :want_to_get, length: {maximum: 2000}
     validates :dont_want_to_get, length: {maximum: 2000}
-
-    def name
-      user.try(:name)
-    end
-
-    def email
-      user.try(:mail)
-    end
   end
 end

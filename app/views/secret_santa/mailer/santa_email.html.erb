@@ -1,14 +1,1 @@
-<p>Hi <%= @giver.name || @giver.login %>,</p>
-
-<p>You're Secret Santa for: <strong><%= @receiver.user.try(:name) || @receiver.user.try(:login) %></strong>.</p>
-
-<% if @game.message.present? %>
-  <p>Message from organizer:</p>
-  <p><%= simple_format(@game.message) %></p>
-<% end %>
-
-<p>Wishes: <%= @receiver.want_to_get.presence || 'No wishes provided' %></p>
-
-<p>Don't want to get: <%= @receiver.dont_want_to_get.presence || 'Nothing specified' %></p>
-
-<p>Happy gifting!</p>
+<div><%= textilizable(@message) %></div>

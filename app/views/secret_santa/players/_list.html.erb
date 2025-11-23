@@ -12,8 +12,8 @@
     <tbody>
     <% @players.each do |player| %>
       <tr>
-        <td><%= player.name %></td>
-        <td><%= player.email %></td>
+        <td><%= player.user.name %></td>
+        <td><%= player.user.mail %></td>
         <td><%= player_actions(player) %></td>
       </tr>
     <% end %>

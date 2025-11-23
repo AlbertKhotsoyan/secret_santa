@@ -1,13 +1,17 @@
 <h1><%= @game.name %></h1>
-<p><%= simple_format @game.message %></p>
+<p><%= textilizable(@game.message) %></p>
+<%= button_to l(:button_edit), edit_secret_santa_game_path(@game), method: :get %>
 
 <% if User.current.admin? %>
   <h2><%= l(:label_secret_santa_players) %></h2>
 
   <% if @game.assignments.exists? %>
     <% @game.assignments.each do |a| %>
-      <p><%= a.giver.try(:name) %> (<%= a.giver.try(:email) %>)</p>
+      <p><%= a.giver.user.try(:name) %> (<%= a.giver.user.try(:mail) %>)</p>
     <% end %>
+
+    <%= button_to l(:label_update_players_list), draw_secret_santa_game_path(@game),
+                  method: :post, class: 'btn btn-primary' %>
 
     <%= button_to l(:label_sent_emails), send_emails_secret_santa_game_path(@game),
                   method: :post, data: { confirm: l(:hint_send_emails) }, class: 'btn btn-primary' %>
@@ -18,6 +22,3 @@
                   method: :post, class: 'btn btn-primary' %>
   <% end %>
 <% end %>
-
-<%= button_to l(:label_add_all_player_and_draw), draw_secret_santa_game_path(@game),
-              method: :post, class: 'btn btn-primary' %>

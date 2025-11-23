@@ -3,10 +3,11 @@
 class SecretSantaGamesController < ApplicationController
   before_action :require_login
   before_action :authorize_admin
-  before_action :set_game, only: [:show, :destroy, :draw, :send_emails]
+  before_action :set_game, only: %i[show edit update destroy draw send_emails]
+
+  helper SecretSanta::SecretSantaHelper
 
   def show
-    # @assignments = @game.assignments.includes(:giver_record, :recipient_record)
     render('secret_santa/games/show')
   end
 
@@ -17,6 +18,10 @@ class SecretSantaGamesController < ApplicationController
     render('secret_santa/games/new')
   end
 
+  def edit
+    render('secret_santa/games/edit')
+  end
+
   def create
     @game = SecretSanta::Game.new(game_params)
     if @game.save
@@ -24,6 +29,14 @@ class SecretSantaGamesController < ApplicationController
     else
       @available_players = SecretSanta::Player.all
       render('secret_santa/games/new')
+    end
+  end
+
+  def update
+    if @game.update(game_params)
+      redirect_to(secret_santa_game_path(@game), notice: l(:notice_successful_update))
+    else
+      render('secret_santa/games/edit')
     end
   end
 

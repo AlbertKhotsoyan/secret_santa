@@ -8,6 +8,7 @@ en:
   label_write_an_email: 'Write a letter'
   label_add_all_player_and_draw: 'Add all registered players and draw'
   label_sent_emails: 'Send letters'
+  label_update_players_list: 'Update players list'
 
   field_want_to_get: 'What would you prefer to receive as a gift from Secret Santa?'
   field_dont_want_to_get: 'What would you rather not receive?'
@@ -23,3 +24,4 @@ en:
   hint_write_an_email_using_template_vars: 'Write a letter for santa using these template vars below'
   hint_add_an_email_to_account: 'To play this game, you need to add an email address to your account.'
   hint_send_emails: 'Send letters to all players now?'
+  hint_template_variables: "Possible variables: ((Giver_name)), ((Receiver_name)), ((Receiver_preferred_gifts)), ((Receiver_avoid_these_gifts))"

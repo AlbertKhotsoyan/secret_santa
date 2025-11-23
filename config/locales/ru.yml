@@ -8,6 +8,7 @@ ru:
   label_write_an_email: 'Напишите письмо'
   label_add_all_player_and_draw: 'Добавить всех зарегистрированных игроков и проводить жеребьевку'
   label_sent_emails: 'Отправлять письма'
+  label_update_players_list: 'Обновить список игроков'
 
   field_want_to_get: 'Что вы предпочитайте получить в качестве подарка от тайной санты'
   field_dont_want_to_get: 'Чего бы вы предпочли не получать?'
@@ -23,3 +24,4 @@ ru:
   hint_write_an_email_using_template_vars: 'Наишите письмо санте используя переменные действия ниже:'
   hint_add_an_email_to_account: 'Чтобы играть в эту игру, вам нужно добавить адрес электронной почты в свой аккаунт.'
   hint_send_emails: 'Отправить письма всем игрокам сейчас?'
+  hint_template_variables: "Возможные переменные: ((Giver_name)), ((Receiver_name)), ((Receiver_preferred_gifts)), ((Receiver_avoid_these_gifts))"

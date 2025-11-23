@@ -1,18 +1,3 @@
-<h1><%= l(:label_write_an_email) %></h1>
-<p><%= l(:hint_write_an_email_using_template_vars) %></p>
+<h2><%= link_to l(:label_secret_santa_games), secret_santa_path %> » <%= l(:button_create) %></h2>
 
-<%= form_with model: @game, url: secret_santa_games_path do |f| %>
-  <div>
-    <%= f.label(:name, l(:field_subject)) %><br>
-    <%= f.text_field :name %>
-  </div>
-
-  <div>
-    <%= f.label(:name, l(:field_message)) %><br>
-    <%= f.text_area :message %>
-  </div>
-
-  <div>
-    <%= f.submit l(:button_create) %>
-  </div>
-<% end %>
+<%= render('secret_santa/games/form') %>
