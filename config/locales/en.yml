@@ -1,16 +1,27 @@
 en:
-  label_secret_santa: "Secret Santa"
-  label_secret_santa_default_subject: "Default email subject"
-  label_secret_santa_default_message: "Default message template"
-  text_secret_santa_template_help: "Template variables: {{giver_name}}, {{receiver_name}}, {{receiver_email}}, {{game_name}}"
-  secret_santa:
-    errors:
-      not_enough_participants: "Not enough participants (need at least 2 users with email)."
-      no_assignments: "No assignments exist — draw first."
-    messages:
-      draw_success: "Draw completed."
-      emails_sent: "%{count} emails queued for sending."
-      deleted: "Game deleted."
-  mailer:
-    assignment_subject: "Secret Santa assignment for %{game}"
-    assignment_body_default: "Hello {{giver_name}},\n\nYou are the Secret Santa for: {{receiver_name}} ({{receiver_email}})\n\nGame: {{game_name}}\n\nHave fun!"
+  label_secret_santa: 'Secret Santa'
+  label_secret_santa_games: 'Games list'
+  label_secret_santa_players: 'Players list'
+  label_email_information: 'Your email address: %{address}'
+  label_draw_successful: 'The draw was successful'
+  label_emails_has_ben_sent: 'Letters sent successfully'
+  label_write_an_email: 'Write a letter'
+  label_add_all_player_and_draw: 'Add all registered players and draw'
+  label_sent_emails: 'Send letters'
+  label_update_players_list: 'Update players list'
+
+  field_want_to_get: 'What would you prefer to receive as a gift from Secret Santa?'
+  field_dont_want_to_get: 'What would you rather not receive?'
+  field_message: 'Letter'
+
+  error_draw_failed: 'Draw failed'
+  error_no_assignment_found: 'No assignments found. Draw first'
+  error_not_enough_players: 'Not enough players'
+
+  hint_create_player: 'To participate, you must create a player'
+  hint_create_game: 'Create a game to send emails'
+  hint_add_players: 'Add players'
+  hint_write_an_email_using_template_vars: 'Write a letter for santa using these template vars below'
+  hint_add_an_email_to_account: 'To play this game, you need to add an email address to your account.'
+  hint_send_emails: 'Send letters to all players now?'
+  hint_template_variables: "Possible variables: ((Giver_name)), ((Receiver_name)), ((Receiver_preferred_gifts)), ((Receiver_avoid_these_gifts))"

@@ -1,0 +1,16 @@
+<%= form_for @player do |f| %>
+  <p><strong><%= User.current.name %></strong></p>
+  <p><strong><%= email_presence(User.current) %></strong></p>
+
+  <p>
+    <%= f.label :want_to_get, l(:field_want_to_get) %><br>
+    <%= f.text_area :want_to_get, rows: 4, cols: 60 %>
+  </p>
+
+  <p>
+    <%= f.label :dont_want_to_get, l(:field_dont_want_to_get) %><br>
+    <%= f.text_area :dont_want_to_get, rows: 4, cols: 60 %>
+  </p>
+
+  <%= f.submit l(:button_save) %>
+<% end %>

@@ -26,7 +26,7 @@ Layout/AccessModifierIndentation:
 
 Layout/LineLength:
   Enabled: true
-  AllowedPatterns: ['\A\s+test \".+\" do\z', '\A\s*\#']
+  AllowedPatterns: [ '\A\s+test \".+\" do\z', '\A\s*\#' ]
   Max: 200
 
 Layout/SpaceBeforeSemicolon:
@@ -77,9 +77,6 @@ Naming/AccessorMethodName:
   Enabled: false
 
 Naming/BinaryOperatorParameterName:
-  Enabled: false
-
-Naming/PredicateName:
   Enabled: false
 
 Naming/VariableNumber:
@@ -249,7 +246,7 @@ Style/MethodCallWithArgsParentheses:
 
 Style/NumericPredicate:
   Enabled: true
-  AllowedMethods: [==]
+  AllowedMethods: [ == ]
   EnforcedStyle: predicate
 
 Style/OptionHash:

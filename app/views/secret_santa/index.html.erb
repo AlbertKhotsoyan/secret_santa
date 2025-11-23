@@ -1,29 +1,19 @@
-<h2><%= l(:label_secret_santa) %></h2>
+<h1><%= link_to l(:label_secret_santa), secret_santa_path %></h1>
 
-<p><%= link_to l(:button_create), action: :new %></p>
+<% if User.current.admin? %>
+  <h2><%= l(:label_secret_santa_games) %></h2>
+  <h3><%= l(:hint_create_game) %></h3>
+  <div class="contextual">
+    <%= link_to l(:button_create), new_secret_santa_game_path, class: 'icon icon-add' %>
+  </div>
+  <%= render partial: 'secret_santa/games/list', locals: { games: @games } %>
+<% end %>
 
-<table class="list issues">
-  <thead>
-  <tr>
-    <th><%= l(:field_id) %></th>
-    <th><%= l(:field_name) %></th>
-    <th>Group</th>
-    <th><%= l(:field_created_on) %></th>
-    <th>&nbsp;</th>
-  </tr>
-  </thead>
-  <tbody>
-  <% @games.each do |g| %>
-    <tr>
-      <td><%= g.id %></td>
-      <td><%= link_to h(g.name), action: :show, id: g.id %></td>
-      <td><%= h(Group.find_by(id: g.group_id)&.lastname) %></td>
-      <td><%= format_time(g.created_at) %></td>
-      <td>
-        <%= link_to 'Show', action: :show, id: g.id %> |
-        <%= link_to 'Delete', {action: :destroy, id: g.id}, method: :delete, data: { confirm: 'Delete?' } %>
-      </td>
-    </tr>
-  <% end %>
-  </tbody>
-</table>
+<h2><%= l(:label_secret_santa_players) %></h2>
+<% unless SecretSanta::Player.exists?(id: User.current.id) %>
+  <h3><%= l(:hint_create_player) %></h3>
+  <div class="contextual">
+    <%= link_to l(:button_create), new_secret_santa_player_path, class: 'icon icon-add' %>
+  </div>
+<% end %>
+<%= render partial: 'secret_santa/players/list', locals: { players: @players } %>

@@ -1,0 +1,22 @@
+<% if @players.nil? || @players.count.zero? %>
+  <p class="nodata"><%= l(:label_no_data) %></p>
+<% else %>
+  <table class="list">
+    <thead>
+    <tr>
+      <th><%= l(:label_user) %></th>
+      <th><%= l(:field_mail) %></th>
+      <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @players.each do |player| %>
+      <tr>
+        <td><%= player.user.name %></td>
+        <td><%= player.user.mail %></td>
+        <td><%= player_actions(player) %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+<% end %>
