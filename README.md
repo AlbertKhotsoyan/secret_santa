@@ -6,6 +6,7 @@ Players register themselves, add their gift preferences, and an administrator ma
 * Redmine 5.0
 * Redmine 5.1
 * Redmine 6.0
+* Redmine 6.1
 
 ## Supported Languages
 * English (en)
@@ -30,22 +31,18 @@ A player can enter:
 This information is private and visible only to the player.
 
 
-### 2. Game Management (Admin)
+### 2. Game Management
 
-The administrator creates a Secret Santa Game and configures:
-* Email subject
-* Email body using template variables
-* Player list
+The administrator creates a Secret Santa Game and configures Email subject and body using template variables.
 
 After a game is created, the admin can:
-* add all registered players to the game
-* run the draw to assign each giver a receiver
-* update the player list later if new players register
+* add all registered players to the game and run the draw to assign each giver a receiver
+* update the player list and draw later if new players register
 
 
 ### 3. Sending Notification Emails
-* Once the draw is complete and the roster is finalized, the admin can send personalized email letters to all givers.
-* The email subject and body supports template variables that automatically insert player information.
+
+Once the draw is complete and the roster is finalized, the admin send personalized email letters to all givers.
 
 
 ### Email Template Example
