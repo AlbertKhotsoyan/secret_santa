@@ -51,10 +51,10 @@ After a game is created, the admin can:
 ### Email Template Example
 `Hello ((Giver_name)),`
 
-`You should send a gift to ((Receiver_name)).`
+`You should prepare a gift for ((Receiver_name)).`
 
-`They prefer to receive:`
+`Receiver prefer:`
 `((Receiver_preferred_gifts))`
 
-`They prefer to avoid:`
+`Receiver prefer to avoid:`
 `((Receiver_avoid_these_gifts))`
