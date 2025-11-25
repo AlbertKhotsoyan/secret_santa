@@ -2,7 +2,9 @@
 
 <% if User.current.admin? %>
   <h2><%= l(:label_secret_santa_games) %></h2>
-  <h3><%= l(:hint_create_game) %></h3>
+  <% if @games.nil? %>
+    <h3><%= l(:hint_create_game) %></h3>
+  <% end %>
   <div class="contextual">
     <%= link_to l(:button_create), new_secret_santa_game_path, class: 'icon icon-add' %>
   </div>
