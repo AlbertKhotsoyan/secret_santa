@@ -1,4 +1,6 @@
-<h1><%= @game.name %></h1>
+<h2><%= link_to l(:label_secret_santa_games), secret_santa_path %> » <%= l(:button_show) %></h2>
+
+<h2><%= @game.name %></h2>
 <p><%= textilizable(@game.message) %></p>
 <%= button_to l(:button_edit), edit_secret_santa_game_path(@game), method: :get %>
 

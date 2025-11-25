@@ -5,7 +5,7 @@ require 'redmine'
 Redmine::Plugin.register(:secret_santa) do
   name 'Secret Santa'
   author 'Albert Khotsoyan'
-  description 'Play Secret Santa in Redmine'
+  description 'A Redmine plugin that allows users to participate in a Secret Santa game directly inside Redmine.'
   version '1.0.0'
   author_url 'albert.khotsoyan@gmail.com'
 
