@@ -40,8 +40,6 @@ A player can define:
 * preferred gifts
 * gifts they want to avoid
 
-This data remains private during the entire event.
-
 
 ### 2. Game Management
 
