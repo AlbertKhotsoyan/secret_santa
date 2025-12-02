@@ -44,9 +44,12 @@ class SecretSantaGamesController < ApplicationController
     begin
       @game.draw!
       flash[:notice] = l(:label_draw_successful)
-    rescue StandardError
-      flash[:error] = l(:error_draw_failed)
+    rescue NotEnoughPlayersError
+      flash[:error] = l(:error_not_enough_players)
+    rescue StandardError => e
+      flash[:error] = "#{l(:error_draw_failed)}: #{e.message}"
     end
+
     redirect_to(secret_santa_game_path(@game))
   end
 

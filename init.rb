@@ -9,7 +9,7 @@ Redmine::Plugin.register(:secret_santa) do
   version '1.0.0'
   author_url 'albert.khotsoyan@gmail.com'
 
-  menu :application_menu,
+  menu :top_menu,
        :secret_santa,
        {controller: :secret_santa, action: 'index'},
        caption: :label_secret_santa,

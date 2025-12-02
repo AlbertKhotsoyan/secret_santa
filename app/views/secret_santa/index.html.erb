@@ -13,9 +13,9 @@
 
 <h2><%= l(:label_secret_santa_players) %></h2>
 <% unless SecretSanta::Player.exists?(id: User.current.id) %>
-  <h3><%= l(:hint_create_player) %></h3>
+  <h3><%= l(:hint_create_member) %></h3>
   <div class="contextual">
-    <%= link_to l(:button_create), new_secret_santa_player_path, class: 'icon icon-add' %>
+    <%= link_to l(:button_create_member), new_secret_santa_player_path, class: 'icon icon-add' %>
   </div>
 <% end %>
 <%= render partial: 'secret_santa/players/list', locals: { players: @players } %>

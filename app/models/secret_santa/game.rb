@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+class NotEnoughPlayersError < StandardError; end
+
 module SecretSanta
   class Game < ActiveRecord::Base
     self.table_name = 'secret_santa_games'
@@ -10,7 +12,7 @@ module SecretSanta
 
     def draw!
       players = SecretSanta::Player.order(created_at: :desc)
-      raise StandardError, l(:error_not_enough_players) if players.size < 2
+      raise NotEnoughPlayersError if players.size < 2
 
       shuffled = players.shuffle
 
