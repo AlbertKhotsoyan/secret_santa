@@ -5,6 +5,9 @@ Users register as players, add their gift preferences, and an administrator mana
 ## Supported Redmine Versions
 * Redmine **5.0, 5.1, 6.0, 6.1**
 
+## Supported Databases
+* PostgreSQL
+
 ## Supported Languages
 * English (en)
 * Russian (ru)
@@ -39,8 +42,6 @@ Each Redmine user who wants to participate must create a Player from their own a
 A player can define:
 * preferred gifts
 * gifts they want to avoid
-
-This data remains private during the entire event.
 
 
 ### 2. Game Management
