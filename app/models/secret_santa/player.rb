@@ -2,7 +2,7 @@
 
 module SecretSanta
   class Player < ActiveRecord::Base
-    self.table_name = 'secret_santa_players'
+    self.table_name = 'secret_santa_players_new'
     self.primary_key = 'id'
 
     belongs_to :user, class_name: 'User', foreign_key: :id
