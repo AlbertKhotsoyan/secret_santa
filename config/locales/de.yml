@@ -1,0 +1,29 @@
+de:
+  label_secret_santa: 'Secret Santa'
+  label_secret_santa_games: 'Liste der Spiele'
+  label_secret_santa_players: 'Liste der Spieler'
+  label_email_information: 'Deine E-Mail-Adresse: %{address}'
+  label_draw_successful: 'Die Auslosung war erfolgreich'
+  label_emails_has_ben_sent: 'Briefe erfolgreich versendet'
+  label_write_an_email: 'Schreib einen Brief'
+  label_add_all_player_and_draw: 'Füge alle registrierten Spieler hinzu und starte'
+  label_sent_emails: 'Briefe senden'
+  label_update_players_list: 'Spielerliste aktualisieren'
+
+  field_want_to_get: 'Was wünschst du dir von Secret Santa?'
+  field_dont_want_to_get: 'Was möchtest du lieber nicht von Secret Santa geschenkt bekommen?'
+  field_message: 'Brief'
+
+  error_draw_failed: 'Auslosung fehlgeschlagen'
+  error_no_assignment_found: 'Keine Zuweisung gefunden. Starte erst die Auslosung'
+  error_not_enough_players: 'Nicht genügend Spieler'
+  error_player_deletion_failed: 'Failed to delete participant'
+  error_participated_to_assignment: "Cannot delete participate because they participate in %{assignments_count} assignment(s). Please delete the game(s) first."
+
+  hint_create_player: 'Um teilzunehmen, musst du einen Spieler erstellen'
+  hint_create_game: 'Erstelle ein neues Spiel und versende Einladungen'
+  hint_add_an_email_to_account: 'Um an diesem Spiel teilzunehmen, musst du deinem Account eine E-Mail-Adresse hinzufügen.'
+  hint_send_emails: 'Möchtest du jetzt Briefe an alle Teilnehmer senden?'
+  hint_template_variables: "Textbausteine zur Auswahl: ((Giver_name)), ((Receiver_name)), ((Receiver_preferred_gifts)), ((Receiver_avoid_these_gifts))"
+
+  button_create_member: 'Create a participant'
