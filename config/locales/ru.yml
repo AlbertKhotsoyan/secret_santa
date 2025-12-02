@@ -17,6 +17,8 @@ ru:
   error_draw_failed: 'Жеребьевка провалилась'
   error_no_assignment_found: 'Сначала проводите жеребьевку'
   error_not_enough_players: 'Недостаточно участников'
+  error_player_deletion_failed: 'Не удалось удалить участника'
+  error_participated_to_assignment: "Невозможно удалить участника, так как он участвует в %{assignments_count} задании(ях). Пожалуйста, сначала удалите игру(ы)."
 
   hint_create_member: 'Создайте участника и укажите свои предпочтение'
   hint_create_game: 'Создайте игру для отправки писем'

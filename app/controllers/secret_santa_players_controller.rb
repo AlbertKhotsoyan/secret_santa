@@ -29,10 +29,7 @@ class SecretSantaPlayersController < ApplicationController
   end
 
   def update
-    unless @player.id == User.current.id || User.current.admin?
-      render_403
-      return
-    end
+    return render_403 unless @player.id == User.current.id || User.current.admin?
 
     if @player.update(player_params)
       redirect_to(secret_santa_path, notice: l(:notice_successful_update))
@@ -42,12 +39,22 @@ class SecretSantaPlayersController < ApplicationController
   end
 
   def destroy
-    if @player.id == User.current.id || User.current.admin?
-      @player.destroy
-      redirect_to(secret_santa_path, notice: l(:notice_successful_delete))
-    else
-      render_403
+    return render_403 unless @player.id == User.current.id || User.current.admin?
+
+    assignments_count = SecretSanta::Assignment.count_for_player(@player.id)
+    if assignments_count.positive?
+      flash[:error] = l(:error_participated_to_assignment, assignments_count: assignments_count)
+      redirect_to(secret_santa_path)
+      return
     end
+
+    if @player.destroy
+      flash[:notice] = l(:notice_successful_delete)
+    else
+      flash[:error] = "#{l(:error_player_deletion_failed)}: #{@player.errors.full_messages.join(', ')}"
+    end
+
+    redirect_to(secret_santa_path)
   end
 
 private

@@ -17,6 +17,8 @@ en:
   error_draw_failed: 'Draw failed'
   error_no_assignment_found: 'No assignments found. Draw first'
   error_not_enough_players: 'Not enough participants'
+  error_player_deletion_failed: 'Failed to delete participant'
+  error_participated_to_assignment: "Cannot delete participate because they participate in %{assignments_count} assignment(s). Please delete the game(s) first."
 
   hint_create_member: 'Create a participant and specify your preferences'
   hint_create_game: 'Create a game to send emails'
