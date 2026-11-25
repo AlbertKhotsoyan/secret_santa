@@ -2,7 +2,7 @@ pl:
   label_secret_santa: 'Tajemniczy Mikołaj'
   label_secret_santa_games: 'Lista gier'
   label_secret_santa_players: 'Lista uczestników'
-  label_email_information: 'Twój adres e-mail: %{address}'
+  label_email_information: 'Adres e-mail: %{address}'
   label_draw_successful: 'Losowanie zakończyło się pomyślnie'
   label_emails_has_ben_sent: 'Listy zostały wysłane pomyślnie'
   label_write_an_email: 'Napisz list'

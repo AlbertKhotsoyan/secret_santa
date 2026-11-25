@@ -1,8 +1,8 @@
 ru:
-  label_secret_santa: 'Тайный Санта'
+  label_secret_santa: 'Тайный Дед Мороз'
   label_secret_santa_games: 'Список игр'
   label_secret_santa_players: 'Список участников'
-  label_email_information: 'Ваш адрес электронной почты: %{address}'
+  label_email_information: 'Адрес электронной почты: %{address}'
   label_draw_successful: 'Жеребьевка прошла успешно'
   label_emails_has_ben_sent: 'Письма отправлены успешно'
   label_write_an_email: 'Напишите письмо'
@@ -10,7 +10,7 @@ ru:
   label_sent_emails: 'Отправить письма'
   label_update_players_list: 'Обновить список участников'
 
-  field_want_to_get: 'Что вы предпочитаете получить в качестве подарка от Тайного Санты?'
+  field_want_to_get: 'Что вы предпочитаете получить в качестве подарка от Тайного Деда Мороза?'
   field_dont_want_to_get: 'Чего бы вы предпочли не получать?'
   field_message: 'Письмо'
 

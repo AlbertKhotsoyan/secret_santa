@@ -2,7 +2,7 @@ en:
   label_secret_santa: 'Secret Santa'
   label_secret_santa_games: 'Games list'
   label_secret_santa_players: 'Participants list'
-  label_email_information: 'Your email address: %{address}'
+  label_email_information: 'Email address: %{address}'
   label_draw_successful: 'The draw was successful'
   label_emails_has_ben_sent: 'Letters sent successfully'
   label_write_an_email: 'Write a letter'

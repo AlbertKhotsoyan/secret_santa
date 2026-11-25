@@ -2,7 +2,7 @@ zh:
   label_secret_santa: '神秘圣诞老人'
   label_secret_santa_games: '游戏列表'
   label_secret_santa_players: '参与者列表'
-  label_email_information: '您的电子邮件地址：%{address}'
+  label_email_information: '电子邮件地址：%{address}'
   label_draw_successful: '抽签成功'
   label_emails_has_ben_sent: '信件已成功发送'
   label_write_an_email: '写一封信'

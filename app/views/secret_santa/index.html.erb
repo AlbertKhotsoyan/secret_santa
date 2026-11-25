@@ -1,21 +1,53 @@
-<h1><%= link_to l(:label_secret_santa), secret_santa_path %></h1>
+<% content_for :header_tags do %>
+  <%= stylesheet_link_tag 'secret_santa', plugin: 'secret_santa' %>
+<% end %>
 
-<% if User.current.admin? %>
-  <h2><%= l(:label_secret_santa_games) %></h2>
-  <% if @games.blank? %>
-    <h3><%= l(:hint_create_game) %></h3>
+<div class="secret-santa-page">
+  <div class="secret-santa-page-header">
+    <h1><%= link_to l(:label_secret_santa), secret_santa_path %></h1>
+  </div>
+
+  <% if User.current.admin? %>
+    <section class="box secret-santa-card">
+      <div class="secret-santa-card-header">
+        <div class="secret-santa-card-title">
+          <h2><%= l(:label_secret_santa_games) %></h2>
+          <span class="secret-santa-badge"><%= @games.size %></span>
+        </div>
+        <div class="contextual">
+          <%= link_to l(:button_create), new_secret_santa_game_path, class: 'icon icon-add' %>
+        </div>
+      </div>
+
+      <% if @games.blank? %>
+        <div class="secret-santa-hint">
+          <h3><%= l(:hint_create_game) %></h3>
+        </div>
+      <% end %>
+
+      <%= render partial: 'secret_santa/games/list', locals: { games: @games } %>
+    </section>
   <% end %>
-  <div class="contextual">
-    <%= link_to l(:button_create), new_secret_santa_game_path, class: 'icon icon-add' %>
-  </div>
-  <%= render partial: 'secret_santa/games/list', locals: { games: @games } %>
-<% end %>
 
-<h2><%= l(:label_secret_santa_players) %></h2>
-<% unless @current_user_registered %>
-  <h3><%= l(:hint_create_member) %></h3>
-  <div class="contextual">
-    <%= link_to l(:button_create_member), new_secret_santa_player_path, class: 'icon icon-add' %>
-  </div>
-<% end %>
-<%= render partial: 'secret_santa/players/list', locals: { players: @players } %>
+  <section class="box secret-santa-card">
+    <div class="secret-santa-card-header">
+      <div class="secret-santa-card-title">
+        <h2><%= l(:label_secret_santa_players) %></h2>
+        <span class="secret-santa-badge"><%= @players.size %></span>
+      </div>
+      <% unless @current_user_registered %>
+        <div class="contextual">
+          <%= link_to l(:button_create_member), new_secret_santa_player_path, class: 'icon icon-add' %>
+        </div>
+      <% end %>
+    </div>
+
+    <% unless @current_user_registered %>
+      <div class="secret-santa-hint">
+        <h3><%= l(:hint_create_member) %></h3>
+      </div>
+    <% end %>
+
+    <%= render partial: 'secret_santa/players/list', locals: { players: @players } %>
+  </section>
+</div>

@@ -2,7 +2,7 @@ ja:
   label_secret_santa: 'シークレットサンタ'
   label_secret_santa_games: 'ゲーム一覧'
   label_secret_santa_players: '参加者一覧'
-  label_email_information: 'あなたのメールアドレス: %{address}'
+  label_email_information: 'メールアドレス: %{address}'
   label_draw_successful: '抽選が完了しました'
   label_emails_has_ben_sent: '手紙を送信しました'
   label_write_an_email: '手紙を書く'

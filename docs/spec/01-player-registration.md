@@ -38,7 +38,7 @@ Allow Redmine users to opt into a Secret Santa event and communicate their gift 
 
 ### US-5 (`P3` — Additional): Account Email Presence Guidance
 
-* **Given** an authenticated user whose Redmine account has an email address configured, **When** they open the participant creation or edit form, **Then** the form displays their email address (`Your email address: <address>`).
+* **Given** an authenticated user whose Redmine account has an email address configured, **When** they open the participant creation or edit form, **Then** the form displays their email address (`Email address: <address>`).
 * **Given** an authenticated user whose Redmine account has no email address configured, **When** they open the participant creation or edit form, **Then** the form displays a warning hint prompting them to add an email address to their account in order to play.
 
 ## 5. Functional Requirements and Business Rules

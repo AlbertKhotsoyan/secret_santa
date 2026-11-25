@@ -2,7 +2,7 @@ it:
   label_secret_santa: 'Secret Santa'
   label_secret_santa_games: 'Elenco dei giochi'
   label_secret_santa_players: 'Elenco dei partecipanti'
-  label_email_information: 'Il tuo indirizzo e-mail: %{address}'
+  label_email_information: 'Indirizzo e-mail: %{address}'
   label_draw_successful: 'Il sorteggio è stato completato con successo'
   label_emails_has_ben_sent: 'Lettere inviate con successo'
   label_write_an_email: 'Scrivi una lettera'

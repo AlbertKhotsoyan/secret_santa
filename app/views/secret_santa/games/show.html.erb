@@ -1,36 +1,65 @@
-<h2><%= link_to l(:label_secret_santa_games), secret_santa_path %> » <%= l(:button_show) %></h2>
-
-<h2><%= @game.name %></h2>
-<p><%= textilizable(@game.message) %></p>
-<%= button_to l(:button_edit), edit_secret_santa_game_path(@game), method: :get %>
-
-<div class="line"></div>
-
-<% if User.current.admin? %>
-  <h2><%= l(:label_secret_santa_players) %></h2>
-
-  <% if @assignments.present? %>
-    <% @assignments.each do |assignment| %>
-      <p><%= assignment.giver.user.try(:name) %> (<%= assignment.giver.user.try(:mail) %>)</p>
-    <% end %>
-
-    <%= button_to l(:label_update_players_list), draw_secret_santa_game_path(@game),
-                  method: :post, class: 'btn btn-primary' %>
-
-    <%= button_to l(:label_sent_emails), send_emails_secret_santa_game_path(@game),
-                  method: :post, data: { confirm: l(:hint_send_emails) }, class: 'btn btn-primary' %>
-  <% else %>
-    <p><%= l(:label_no_data) %></p>
-
-    <%= button_to l(:label_add_all_player_and_draw), draw_secret_santa_game_path(@game),
-                  method: :post, class: 'btn btn-primary' %>
-  <% end %>
+<% content_for :header_tags do %>
+  <%= stylesheet_link_tag 'secret_santa', plugin: 'secret_santa' %>
 <% end %>
 
-<style>
-    .line {
-        height: 1px;
-        background: #ccc;
-        margin: 16px 0;
-    }
-</style>
+<div class="secret-santa-page">
+  <div class="secret-santa-breadcrumb">
+    <h2><%= link_to l(:label_secret_santa_games), secret_santa_path %> » <%= l(:button_show) %></h2>
+  </div>
+
+  <section class="box secret-santa-card">
+    <div class="secret-santa-card-header">
+      <div class="secret-santa-card-title">
+        <h2><%= @game.name %></h2>
+      </div>
+      <div class="contextual">
+        <%= button_to l(:button_edit), edit_secret_santa_game_path(@game), method: :get, class: 'btn btn-primary secret-santa-btn' %>
+      </div>
+    </div>
+
+    <div class="secret-santa-letter-preview wiki">
+      <%= textilizable(@game.message) %>
+    </div>
+  </section>
+
+  <% if User.current.admin? %>
+    <section class="box secret-santa-card">
+      <div class="secret-santa-card-header">
+        <div class="secret-santa-card-title">
+          <h2><%= l(:label_secret_santa_players) %></h2>
+          <% if @assignments.present? %>
+            <span class="secret-santa-badge"><%= @assignments.size %></span>
+          <% end %>
+        </div>
+      </div>
+
+      <% if @assignments.present? %>
+        <div class="secret-santa-participants-grid">
+          <% @assignments.each do |assignment| %>
+            <div class="secret-santa-participant-item">
+              <p>
+                <span class="secret-santa-user-name"><%= assignment.giver.user.try(:name) %></span>
+                <span class="secret-santa-user-mail">(<%= assignment.giver.user.try(:mail) %>)</span>
+              </p>
+            </div>
+          <% end %>
+        </div>
+
+        <div class="secret-santa-toolbar">
+          <%= button_to l(:label_update_players_list), draw_secret_santa_game_path(@game),
+                        method: :post, class: 'btn btn-primary secret-santa-btn' %>
+
+          <%= button_to l(:label_sent_emails), send_emails_secret_santa_game_path(@game),
+                        method: :post, data: { confirm: l(:hint_send_emails) }, class: 'btn btn-primary secret-santa-btn' %>
+        </div>
+      <% else %>
+        <p class="nodata"><%= l(:label_no_data) %></p>
+
+        <div class="secret-santa-toolbar">
+          <%= button_to l(:label_add_all_player_and_draw), draw_secret_santa_game_path(@game),
+                        method: :post, class: 'btn btn-primary secret-santa-btn' %>
+        </div>
+      <% end %>
+    </section>
+  <% end %>
+</div>

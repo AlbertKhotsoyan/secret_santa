@@ -1,3 +1,11 @@
-<h2><%= link_to l(:label_secret_santa_players), secret_santa_path %> » <%= l(:button_edit) %></h2>
+<% content_for :header_tags do %>
+  <%= stylesheet_link_tag 'secret_santa', plugin: 'secret_santa' %>
+<% end %>
 
-<%= render('secret_santa/players/form') %>
+<div class="secret-santa-page">
+  <div class="secret-santa-breadcrumb">
+    <h2><%= link_to l(:label_secret_santa_players), secret_santa_path %> » <%= l(:button_edit) %></h2>
+  </div>
+
+  <%= render('secret_santa/players/form') %>
+</div>

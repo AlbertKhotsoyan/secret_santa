@@ -2,7 +2,7 @@ de:
   label_secret_santa: 'Secret Santa'
   label_secret_santa_games: 'Liste der Spiele'
   label_secret_santa_players: 'Teilnehmerliste'
-  label_email_information: 'Deine E-Mail-Adresse: %{address}'
+  label_email_information: 'E-Mail-Adresse: %{address}'
   label_draw_successful: 'Die Auslosung war erfolgreich'
   label_emails_has_ben_sent: 'Briefe erfolgreich versendet'
   label_write_an_email: 'Brief schreiben'

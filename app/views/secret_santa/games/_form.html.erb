@@ -1,19 +1,31 @@
-<h1><%= l(:label_write_an_email) %></h1>
-<p><%= l(:hint_template_variables) %></p>
+<%= error_messages_for @game %>
 
-<%= form_for @game do |form| %>
-  <p>
-    <%= form.label :name, l(:field_subject) %>
-    <%= form.text_field :name, size: 100 %>
-  </p>
+<section class="box secret-santa-card">
+  <div class="secret-santa-card-header">
+    <div class="secret-santa-card-title">
+      <h1><%= l(:label_write_an_email) %></h1>
+    </div>
+  </div>
 
-  <p>
-    <%= form.label :message, l(:field_message) %>
-    <%= santa_letter_text_area(@game, label: false, class: 'wiki-edit', rows: 10) %>
-    <%= wikitoolbar_for('secret_santa_game_message') %>
-  </p>
+  <div class="secret-santa-hint">
+    <p><%= l(:hint_template_variables) %></p>
+  </div>
 
-  <p>
-    <%= form.submit l(:button_save) %>
-  </p>
-<% end %>
+  <%= form_for @game do |form| %>
+    <div class="secret-santa-form-group">
+      <%= form.label :name, l(:field_subject) %>
+      <%= form.text_field :name, size: 100 %>
+    </div>
+
+    <div class="secret-santa-form-group">
+      <%= form.label :message, l(:field_message) %>
+      <%= santa_letter_text_area(@game, label: false, class: 'wiki-edit', rows: 10) %>
+      <%= wikitoolbar_for('secret_santa_game_message') %>
+    </div>
+
+    <div class="secret-santa-form-actions">
+      <%= form.submit l(:button_save), class: 'secret-santa-btn' %>
+      <%= link_to l(:button_cancel), secret_santa_path, class: 'secret-santa-btn' %>
+    </div>
+  <% end %>
+</section>
