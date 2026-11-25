@@ -105,4 +105,24 @@ class SecretSantaPlayersControllerTest < SecretSanta::ControllerTestCase
 
     assert_response :not_found
   end
+
+  # SPEC: docs/spec/01-player-registration.md (FR-002, FR-004)
+  test 'redirects already registered participant away from new and create actions' do
+    create_player(user_id: REGULAR_USER_ID)
+    login_as(REGULAR_USER_ID)
+
+    get :new
+
+    assert_redirected_to secret_santa_path
+
+    assert_no_difference('SecretSanta::Player.count') do
+      post :create, params: {
+        secret_santa_player: {
+          want_to_get: 'Duplicate registration attempt'
+        }
+      }
+    end
+
+    assert_redirected_to secret_santa_path
+  end
 end

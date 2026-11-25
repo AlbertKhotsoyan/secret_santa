@@ -89,4 +89,48 @@ class SecretSantaGameTest < SecretSanta::UnitTestCase
     assert_includes admin_mail.body.encoded, 'Candy'
     assert_includes admin_mail.body.encoded, '-'
   end
+
+  # SPEC: docs/spec/02-game-management-and-draw.md (FR-107)
+  test 'send_santa_emails rescues per-recipient delivery error and continues sending remaining emails' do
+    ActionMailer::Base.deliveries.clear
+    create_player(user_id: ADMIN_USER_ID)
+    create_player(user_id: REGULAR_USER_ID)
+    game = create_game
+    game.draw!
+
+    original_method = SecretSantaMailer.method(:santa_email)
+    call_count = 0
+
+    SecretSantaMailer.define_singleton_method(:santa_email) do |giver, assignment|
+      call_count += 1
+      raise StandardError, 'SMTP temporary failure' if call_count == 1
+
+      original_method.call(giver, assignment)
+    end
+
+    begin
+      failed_messages = game.send_santa_emails
+
+      assert_equal(['SMTP temporary failure'], failed_messages)
+      assert_equal(1, ActionMailer::Base.deliveries.size)
+    ensure
+      SecretSantaMailer.define_singleton_method(:santa_email, original_method)
+    end
+  end
+
+  # SPEC: docs/spec/02-game-management-and-draw.md (FR-104, FR-108)
+  test 'valid_assignments_cycle? detects broken cycle when a participant is removed after draw' do
+    player_ids = [ADMIN_USER_ID, REGULAR_USER_ID, SECOND_REGULAR_USER_ID]
+    player_ids.each { |uid| create_player(user_id: uid) }
+    game = create_game
+    game.draw!
+
+    assert game.valid_assignments_cycle?
+
+    SecretSanta::Player.where(id: SECOND_REGULAR_USER_ID).delete_all
+
+    assert_not game.reload.valid_assignments_cycle?
+    assert_equal 1, SecretSanta::Assignment.count_for_player(ADMIN_USER_ID)
+    assert_equal 1, SecretSanta::Assignment.count_for_player(REGULAR_USER_ID)
+  end
 end

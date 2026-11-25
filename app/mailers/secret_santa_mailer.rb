@@ -8,6 +8,8 @@ class SecretSantaMailer < Mailer
   EMPTY_GIFT_FALLBACK = '-'
 
   def santa_email(giver, assignment)
+    set_language_if_valid(giver.language) if giver.respond_to?(:language)
+
     @giver = giver
     @receiver = assignment.receiver
     @game = assignment.game

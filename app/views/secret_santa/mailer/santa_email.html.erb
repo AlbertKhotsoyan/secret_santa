@@ -1,3 +1,33 @@
-<div class="secret-santa-email">
-  <%= textilizable(@message) %>
+<div class="secret-santa-email" style="background-color: #eef5fb; padding: 28px 14px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; color: #212529;">
+  <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="border-collapse: collapse; border: 0; margin: 0;">
+    <tr>
+      <td align="center" style="border: 0; padding: 0;">
+        <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="600" style="max-width: 600px; width: 100%; border-collapse: separate; border: 1px solid #cfe2f3; border-radius: 12px; background-color: #ffffff; overflow: hidden; box-shadow: 0 6px 20px rgba(24, 78, 130, 0.08);">
+          <tr>
+            <td style="border: 0; padding: 26px 28px 20px; background-color: #1c4b78; background-image: linear-gradient(135deg, #173b5e 0%, #235b8e 55%, #2f74b0 100%); color: #ffffff; text-align: center;">
+              <div style="font-size: 20px; letter-spacing: 8px; color: #b7d8f3; margin-bottom: 8px;">&#10052; &#127876; &#10052;</div>
+              <div style="display: inline-block; padding: 3px 12px; margin-bottom: 10px; border-radius: 999px; background-color: rgba(255, 255, 255, 0.16); color: #e7f3fc; font-size: 12px; font-weight: 600; letter-spacing: 0.6px; text-transform: uppercase;">
+                <%= l(:label_secret_santa) %>
+              </div>
+              <h1 style="margin: 0; font-size: 22px; font-weight: 700; line-height: 1.35; color: #ffffff;">
+                <%= @subject %>
+              </h1>
+            </td>
+          </tr>
+
+          <tr>
+            <td style="border: 0; padding: 0; height: 10px; background-color: #d7ebf6; border-bottom: 1px solid #c5dff0; font-size: 1px; line-height: 1px;">&nbsp;</td>
+          </tr>
+
+          <tr>
+            <td style="border: 0; padding: 26px 28px;">
+              <div class="secret-santa-email-message" style="padding: 18px 20px; background-color: #f8fbfe; border: 1px solid #d8e8f5; border-left: 4px solid #2f74b0; border-radius: 8px; color: #212529; font-size: 15px; line-height: 1.65;">
+                <%= textilizable(@message, only_path: false) %>
+              </div>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
 </div>

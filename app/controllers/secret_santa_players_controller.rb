@@ -2,6 +2,7 @@
 
 class SecretSantaPlayersController < ApplicationController
   before_action :require_login
+  before_action :redirect_if_registered, only: %i[new create]
   before_action :set_player, only: %i[edit update destroy]
 
   helper SecretSanta::SecretSantaHelper
@@ -58,6 +59,12 @@ class SecretSantaPlayersController < ApplicationController
   end
 
 private
+
+  def redirect_if_registered
+    return unless SecretSanta::Player.exists?(id: User.current.id)
+
+    redirect_to(secret_santa_path)
+  end
 
   def can_modify_player?
     @player.id == User.current.id || User.current.admin?

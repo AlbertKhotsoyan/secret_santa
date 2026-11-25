@@ -9,7 +9,11 @@ module SecretSanta
     belongs_to :receiver, class_name: 'SecretSanta::Player', foreign_key: :receiver_id
 
     def self.count_for_player(player_id)
-      where(giver_id: player_id).count
+      where(giver_id: player_id)
+        .or(where(receiver_id: player_id))
+        .select(:secret_santa_game_id)
+        .distinct
+        .count
     end
   end
 end

@@ -52,9 +52,13 @@ class SecretSantaGamesController < ApplicationController
   end
 
   def send_emails
-    if @game.assignments.exists?
-      @game.send_santa_emails
-      flash[:notice] = l(:label_emails_has_ben_sent)
+    if @game.valid_assignments_cycle?
+      failed_messages = @game.send_santa_emails
+      if failed_messages.empty?
+        flash[:notice] = l(:label_emails_has_ben_sent)
+      else
+        flash[:error] = failed_messages.uniq.join(', ')
+      end
     else
       flash[:error] = l(:error_no_assignment_found)
     end

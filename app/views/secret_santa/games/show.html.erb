@@ -35,6 +35,12 @@
       </div>
 
       <% if @assignments.present? %>
+        <% unless @game.valid_assignments_cycle? %>
+          <div class="secret-santa-hint">
+            <p><%= l(:error_no_assignment_found) %></p>
+          </div>
+        <% end %>
+
         <div class="secret-santa-participants-grid">
           <% @assignments.each do |assignment| %>
             <div class="secret-santa-participant-item">

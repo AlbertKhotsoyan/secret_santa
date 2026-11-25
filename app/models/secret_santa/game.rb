@@ -29,10 +29,30 @@ module SecretSanta
       end
     end
 
+    def valid_assignments_cycle?
+      rows = assignments.pluck(:giver_id, :receiver_id)
+      return false if rows.size < MIN_PLAYERS_COUNT
+      return false if rows.any? { |giver_id, receiver_id| giver_id == receiver_id }
+
+      giver_ids = rows.map(&:first)
+      receiver_ids = rows.map(&:last)
+      giver_ids.uniq.size == rows.size && giver_ids.sort == receiver_ids.sort
+    end
+
     def send_santa_emails
+      failed_messages = []
+
       assignments.includes(giver: :user, receiver: :user).find_each do |assignment|
-        SecretSantaMailer.santa_email(assignment.giver.user, assignment).deliver_now
+        giver_user = assignment.giver&.user
+        next unless giver_user
+
+        SecretSantaMailer.santa_email(giver_user, assignment).deliver_later
+      rescue StandardError => e
+        Rails.logger&.error("SecretSanta email delivery failed for user #{assignment.giver_id}: #{e.message}")
+        failed_messages << e.message
       end
+
+      failed_messages
     end
   end
 end
