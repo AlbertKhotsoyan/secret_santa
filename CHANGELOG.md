@@ -1,5 +1,9 @@
 # Changelog
 
+## [Unreleased]
+### Added
+- Snowfall effect (`secret_santa_snow.js`) and decorative snowflake, snow/icicle, and Christmas tree vector sprites across `/secret_santa`, `/secret_santa_games`, and `/secret_santa_players`;
+
 ## [1.0.3] - 2026-11-25
 ### Added
 - Default letter message template with template variables when creating a new game;
