@@ -8,13 +8,12 @@ class SecretSantaGamesController < ApplicationController
   helper SecretSanta::SecretSantaHelper
 
   def show
+    @assignments = @game.assignments.includes(giver: :user)
     render('secret_santa/games/show')
   end
 
   def new
     @game = SecretSanta::Game.new
-
-    @available_players = SecretSanta::Player.all
     render('secret_santa/games/new')
   end
 
@@ -27,7 +26,6 @@ class SecretSantaGamesController < ApplicationController
     if @game.save
       redirect_to(secret_santa_game_path(@game), notice: l(:notice_successful_create))
     else
-      @available_players = SecretSanta::Player.all
       render('secret_santa/games/new')
     end
   end
@@ -44,10 +42,10 @@ class SecretSantaGamesController < ApplicationController
     begin
       @game.draw!
       flash[:notice] = l(:label_draw_successful)
-    rescue NotEnoughPlayersError
+    rescue SecretSanta::Game::NotEnoughPlayersError
       flash[:error] = l(:error_not_enough_players)
     rescue StandardError => e
-      flash[:error] = "#{l(:error_draw_failed)}: #{e.message}"
+      flash[:error] = l(:error_draw_failed, message: e.message)
     end
 
     redirect_to(secret_santa_game_path(@game))
@@ -78,6 +76,8 @@ private
 
   def set_game
     @game = SecretSanta::Game.find(params[:id])
+  rescue ActiveRecord::RecordNotFound
+    render_404
   end
 
   def game_params

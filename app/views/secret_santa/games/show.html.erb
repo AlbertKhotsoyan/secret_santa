@@ -9,9 +9,9 @@
 <% if User.current.admin? %>
   <h2><%= l(:label_secret_santa_players) %></h2>
 
-  <% if @game.assignments.exists? %>
-    <% @game.assignments.each do |a| %>
-      <p><%= a.giver.user.try(:name) %> (<%= a.giver.user.try(:mail) %>)</p>
+  <% if @assignments.present? %>
+    <% @assignments.each do |assignment| %>
+      <p><%= assignment.giver.user.try(:name) %> (<%= assignment.giver.user.try(:mail) %>)</p>
     <% end %>
 
     <%= button_to l(:label_update_players_list), draw_secret_santa_game_path(@game),
@@ -26,7 +26,6 @@
                   method: :post, class: 'btn btn-primary' %>
   <% end %>
 <% end %>
-
 
 <style>
     .line {

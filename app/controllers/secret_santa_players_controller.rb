@@ -12,7 +12,7 @@ class SecretSantaPlayersController < ApplicationController
   end
 
   def edit
-    if params[:id].to_i == User.current.id
+    if @player.id == User.current.id
       render('secret_santa/players/edit')
     else
       redirect_to(secret_santa_path)
@@ -29,7 +29,7 @@ class SecretSantaPlayersController < ApplicationController
   end
 
   def update
-    return render_403 unless @player.id == User.current.id || User.current.admin?
+    return render_403 unless can_modify_player?
 
     if @player.update(player_params)
       redirect_to(secret_santa_path, notice: l(:notice_successful_update))
@@ -39,7 +39,7 @@ class SecretSantaPlayersController < ApplicationController
   end
 
   def destroy
-    return render_403 unless @player.id == User.current.id || User.current.admin?
+    return render_403 unless can_modify_player?
 
     assignments_count = SecretSanta::Assignment.count_for_player(@player.id)
     if assignments_count.positive?
@@ -51,7 +51,7 @@ class SecretSantaPlayersController < ApplicationController
     if @player.destroy
       flash[:notice] = l(:notice_successful_delete)
     else
-      flash[:error] = "#{l(:error_player_deletion_failed)}: #{@player.errors.full_messages.join(', ')}"
+      flash[:error] = l(:error_player_deletion_failed, errors: @player.errors.full_messages.join(', '))
     end
 
     redirect_to(secret_santa_path)
@@ -59,8 +59,14 @@ class SecretSantaPlayersController < ApplicationController
 
 private
 
+  def can_modify_player?
+    @player.id == User.current.id || User.current.admin?
+  end
+
   def set_player
     @player = SecretSanta::Player.find(params[:id])
+  rescue ActiveRecord::RecordNotFound
+    render_404
   end
 
   def player_params

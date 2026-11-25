@@ -3,11 +3,20 @@ A Redmine plugin that allows users to participate in a Secret Santa game directl
 Users register as players, add their gift preferences, and an administrator manages the game, performs the draw, and sends personalized emails using template variables.
 
 ## Supported Redmine Versions
-* Redmine **5.0, 5.1, 6.0, 6.1**
+* Redmine **6.0, 6.1, 7.0**
 
 ## Supported Languages
 * English (en)
+* French (fr)
+* Japanese (ja)
+* German (de)
+* Spanish (es)
+* Brazilian Portuguese (pt-BR)
 * Russian (ru)
+* Polish (pl)
+* Simplified Chinese (zh)
+* Korean (ko)
+* Italian (it)
 
 ## Installation
 1. Copy the plugin folder to:

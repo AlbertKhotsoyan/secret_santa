@@ -1,19 +1,19 @@
 <h1><%= l(:label_write_an_email) %></h1>
 <p><%= l(:hint_template_variables) %></p>
 
-<%= form_for @game do |f| %>
+<%= form_for @game do |form| %>
   <p>
-    <%= f.label :name, l(:field_subject) %>
-    <%= f.text_field :name, :size => 100 %>
+    <%= form.label :name, l(:field_subject) %>
+    <%= form.text_field :name, size: 100 %>
   </p>
 
   <p>
-    <%= f.label :message, l(:field_message) %>
-    <%= santa_letter_text_area(@game, :label => false, :class => 'wiki-edit', :rows => 10) %>
+    <%= form.label :message, l(:field_message) %>
+    <%= santa_letter_text_area(@game, label: false, class: 'wiki-edit', rows: 10) %>
     <%= wikitoolbar_for('secret_santa_game_message') %>
   </p>
 
   <p>
-    <%= f.submit l(:button_save) %>
+    <%= form.submit l(:button_save) %>
   </p>
 <% end %>

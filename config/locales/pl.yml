@@ -1,0 +1,29 @@
+pl:
+  label_secret_santa: 'Tajemniczy Mikołaj'
+  label_secret_santa_games: 'Lista gier'
+  label_secret_santa_players: 'Lista uczestników'
+  label_email_information: 'Twój adres e-mail: %{address}'
+  label_draw_successful: 'Losowanie zakończyło się pomyślnie'
+  label_emails_has_ben_sent: 'Listy zostały wysłane pomyślnie'
+  label_write_an_email: 'Napisz list'
+  label_add_all_player_and_draw: 'Dodaj wszystkich zarejestrowanych uczestników i wylosuj'
+  label_sent_emails: 'Wyślij listy'
+  label_update_players_list: 'Zaktualizuj listę uczestników'
+
+  field_want_to_get: 'Co chciałbyś otrzymać w prezencie od Tajemniczego Mikołaja?'
+  field_dont_want_to_get: 'Czego wolałbyś nie otrzymać?'
+  field_message: 'List'
+
+  error_draw_failed: 'Losowanie nie powiodło się: %{message}'
+  error_no_assignment_found: 'Nie znaleziono przypisań. Najpierw przeprowadź losowanie'
+  error_not_enough_players: 'Niewystarczająca liczba uczestników'
+  error_player_deletion_failed: 'Nie udało się usunąć uczestnika: %{errors}'
+  error_participated_to_assignment: 'Nie można usunąć uczestnika, ponieważ bierze udział w %{assignments_count} przypisaniu(ach). Najpierw usuń grę(y).'
+
+  hint_create_member: 'Utwórz uczestnika i określ swoje preferencje'
+  hint_create_game: 'Utwórz grę, aby wysłać wiadomości e-mail'
+  hint_add_an_email_to_account: 'Aby wziąć udział w tej grze, musisz dodać adres e-mail do swojego konta.'
+  hint_send_emails: 'Wysłać listy do wszystkich uczestników teraz?'
+  hint_template_variables: 'Dostępne zmienne: ((Giver_name)), ((Receiver_name)), ((Receiver_preferred_gifts)), ((Receiver_avoid_these_gifts))'
+
+  button_create_member: 'Utwórz uczestnika'

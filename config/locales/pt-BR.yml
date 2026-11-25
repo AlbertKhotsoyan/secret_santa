@@ -1,0 +1,29 @@
+pt-BR:
+  label_secret_santa: 'Amigo Secreto'
+  label_secret_santa_games: 'Lista de jogos'
+  label_secret_santa_players: 'Lista de participantes'
+  label_email_information: 'Seu endereço de e-mail: %{address}'
+  label_draw_successful: 'O sorteio foi realizado com sucesso'
+  label_emails_has_ben_sent: 'Cartas enviadas com sucesso'
+  label_write_an_email: 'Escrever uma carta'
+  label_add_all_player_and_draw: 'Adicionar todos os participantes registrados e sortear'
+  label_sent_emails: 'Enviar cartas'
+  label_update_players_list: 'Atualizar lista de participantes'
+
+  field_want_to_get: 'O que você preferiria receber de presente do Amigo Secreto?'
+  field_dont_want_to_get: 'O que você preferiria não receber?'
+  field_message: 'Carta'
+
+  error_draw_failed: 'Falha no sorteio: %{message}'
+  error_no_assignment_found: 'Nenhuma atribuição encontrada. Realize o sorteio primeiro'
+  error_not_enough_players: 'Participantes insuficientes'
+  error_player_deletion_failed: 'Falha ao excluir participante: %{errors}'
+  error_participated_to_assignment: 'Não é possível excluir o participante porque ele participa de %{assignments_count} atribuição(ões). Exclua o(s) jogo(s) primeiro.'
+
+  hint_create_member: 'Crie um participante e especifique suas preferências'
+  hint_create_game: 'Crie um jogo para enviar e-mails'
+  hint_add_an_email_to_account: 'Para participar deste jogo, você precisa adicionar um endereço de e-mail à sua conta.'
+  hint_send_emails: 'Enviar cartas para todos os participantes agora?'
+  hint_template_variables: 'Variáveis possíveis: ((Giver_name)), ((Receiver_name)), ((Receiver_preferred_gifts)), ((Receiver_avoid_these_gifts))'
+
+  button_create_member: 'Criar um participante'

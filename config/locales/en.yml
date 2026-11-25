@@ -14,16 +14,16 @@ en:
   field_dont_want_to_get: 'What would you rather not receive?'
   field_message: 'Letter'
 
-  error_draw_failed: 'Draw failed'
+  error_draw_failed: 'Draw failed: %{message}'
   error_no_assignment_found: 'No assignments found. Draw first'
   error_not_enough_players: 'Not enough participants'
-  error_player_deletion_failed: 'Failed to delete participant'
-  error_participated_to_assignment: "Cannot delete participate because they participate in %{assignments_count} assignment(s). Please delete the game(s) first."
+  error_player_deletion_failed: 'Failed to delete participant: %{errors}'
+  error_participated_to_assignment: 'Cannot delete participant because they participate in %{assignments_count} assignment(s). Please delete the game(s) first.'
 
   hint_create_member: 'Create a participant and specify your preferences'
   hint_create_game: 'Create a game to send emails'
   hint_add_an_email_to_account: 'To play this game, you need to add an email address to your account.'
   hint_send_emails: 'Send letters to all participants now?'
-  hint_template_variables: "Possible variables: ((Giver_name)), ((Receiver_name)), ((Receiver_preferred_gifts)), ((Receiver_avoid_these_gifts))"
+  hint_template_variables: 'Possible variables: ((Giver_name)), ((Receiver_name)), ((Receiver_preferred_gifts)), ((Receiver_avoid_these_gifts))'
 
   button_create_member: 'Create a participant'

@@ -1,0 +1,29 @@
+zh:
+  label_secret_santa: '神秘圣诞老人'
+  label_secret_santa_games: '游戏列表'
+  label_secret_santa_players: '参与者列表'
+  label_email_information: '您的电子邮件地址：%{address}'
+  label_draw_successful: '抽签成功'
+  label_emails_has_ben_sent: '信件已成功发送'
+  label_write_an_email: '写一封信'
+  label_add_all_player_and_draw: '添加所有已注册参与者并抽签'
+  label_sent_emails: '发送信件'
+  label_update_players_list: '更新参与者列表'
+
+  field_want_to_get: '您希望从神秘圣诞老人那里收到什么礼物？'
+  field_dont_want_to_get: '您不希望收到什么礼物？'
+  field_message: '信件'
+
+  error_draw_failed: '抽签失败：%{message}'
+  error_no_assignment_found: '未找到分配记录。请先进行抽签'
+  error_not_enough_players: '参与者人数不足'
+  error_player_deletion_failed: '删除参与者失败：%{errors}'
+  error_participated_to_assignment: '无法删除该参与者，因为其参与了 %{assignments_count} 项分配。请先删除相关游戏。'
+
+  hint_create_member: '创建参与者并填写您的礼物偏好'
+  hint_create_game: '创建游戏以发送电子邮件'
+  hint_add_an_email_to_account: '要参与此游戏，您需要先在账户中添加电子邮件地址。'
+  hint_send_emails: '现在向所有参与者发送信件吗？'
+  hint_template_variables: '可用变量：((Giver_name)), ((Receiver_name)), ((Receiver_preferred_gifts)), ((Receiver_avoid_these_gifts))'
+
+  button_create_member: '创建参与者'

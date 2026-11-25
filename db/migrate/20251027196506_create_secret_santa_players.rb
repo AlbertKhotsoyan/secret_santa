@@ -3,7 +3,9 @@
 class CreateSecretSantaPlayers < ActiveRecord::Migration[5.2]
   def change
     create_table(:secret_santa_players_new, id: false) do |t|
+      # rubocop:disable Rails/DangerousColumnNames
       t.primary_key(:id, :integer)
+      # rubocop:enable Rails/DangerousColumnNames
 
       t.text(:want_to_get)
       t.text(:dont_want_to_get)

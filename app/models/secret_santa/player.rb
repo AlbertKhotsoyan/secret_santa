@@ -2,13 +2,15 @@
 
 module SecretSanta
   class Player < ActiveRecord::Base
+    MAX_PREFERENCE_LENGTH = 2000
+
     self.table_name = 'secret_santa_players_new'
     self.primary_key = 'id'
 
     belongs_to :user, class_name: 'User', foreign_key: :id
 
     validates :id, presence: true, uniqueness: true
-    validates :want_to_get, length: {maximum: 2000}
-    validates :dont_want_to_get, length: {maximum: 2000}
+    validates :want_to_get, length: {maximum: MAX_PREFERENCE_LENGTH}
+    validates :dont_want_to_get, length: {maximum: MAX_PREFERENCE_LENGTH}
   end
 end

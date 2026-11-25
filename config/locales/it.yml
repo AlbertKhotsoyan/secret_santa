@@ -1,0 +1,29 @@
+it:
+  label_secret_santa: 'Secret Santa'
+  label_secret_santa_games: 'Elenco dei giochi'
+  label_secret_santa_players: 'Elenco dei partecipanti'
+  label_email_information: 'Il tuo indirizzo e-mail: %{address}'
+  label_draw_successful: 'Il sorteggio è stato completato con successo'
+  label_emails_has_ben_sent: 'Lettere inviate con successo'
+  label_write_an_email: 'Scrivi una lettera'
+  label_add_all_player_and_draw: 'Aggiungi tutti i partecipanti registrati ed esegui il sorteggio'
+  label_sent_emails: 'Invia lettere'
+  label_update_players_list: 'Aggiorna elenco dei partecipanti'
+
+  field_want_to_get: 'Cosa preferiresti ricevere come regalo da Secret Santa?'
+  field_dont_want_to_get: 'Cosa preferiresti non ricevere?'
+  field_message: 'Lettera'
+
+  error_draw_failed: 'Sorteggio non riuscito: %{message}'
+  error_no_assignment_found: 'Nessuna assegnazione trovata. Esegui prima il sorteggio'
+  error_not_enough_players: 'Partecipanti insufficienti'
+  error_player_deletion_failed: 'Impossibile eliminare il partecipante: %{errors}'
+  error_participated_to_assignment: 'Impossibile eliminare il partecipante perché partecipa a %{assignments_count} assegnazione/i. Elimina prima il/i gioco/chi.'
+
+  hint_create_member: 'Crea un partecipante e specifica le tue preferenze'
+  hint_create_game: 'Crea un gioco per inviare e-mail'
+  hint_add_an_email_to_account: 'Per partecipare a questo gioco, devi aggiungere un indirizzo e-mail al tuo account.'
+  hint_send_emails: 'Inviare le lettere a tutti i partecipanti ora?'
+  hint_template_variables: 'Variabili possibili: ((Giver_name)), ((Receiver_name)), ((Receiver_preferred_gifts)), ((Receiver_avoid_these_gifts))'
+
+  button_create_member: 'Crea un partecipante'

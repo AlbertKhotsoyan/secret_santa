@@ -26,14 +26,14 @@ To protect participant privacy, gift preferences are never displayed in the Redm
 
 ## Target Redmine Versions and Compatibility
 
-* **Supported Redmine versions:** Redmine 5.0, 5.1, 6.0, 6.1, 7.0.
+* **Supported Redmine versions:** Redmine 6.0, 6.1, 7.0.
 * **Database compatibility:** PostgreSQL and MySQL (migrations use standard schema definitions, foreign keys with cascading deletes, and unique composite indexing).
 * **Integration mechanisms:**
   * **Top Menu Extension:** Registers `:secret_santa` in Redmine's `:top_menu`.
   * **Authentication & Access Control:** Uses Redmine's standard login verification and administrator role check (`admin?`) along with owner checks for participant profile actions.
   * **Email Delivery & Wiki Formatting:** Integrates with Redmine's mailer infrastructure and wiki text formatting (`textilizable` and wiki toolbar) for composing and rendering Secret Santa letters.
   * **No Core Overrides or Patches:** Does not patch Redmine core classes or use Deface view overrides, ensuring zero conflict with other installed plugins.
-* **Locales included in the repository:** English (`en`), Russian (`ru`), German (`de`).
+* **Locales included in the repository:** English (`en`), French (`fr`), Japanese (`ja`), German (`de`), Spanish (`es`), Brazilian Portuguese (`pt-BR`), Russian (`ru`), Polish (`pl`), Simplified Chinese (`zh`), Korean (`ko`), Italian (`it`).
 
 ## Running, Testing, and Maintenance Commands
 

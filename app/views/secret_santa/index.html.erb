@@ -2,7 +2,7 @@
 
 <% if User.current.admin? %>
   <h2><%= l(:label_secret_santa_games) %></h2>
-  <% if @games.nil? %>
+  <% if @games.blank? %>
     <h3><%= l(:hint_create_game) %></h3>
   <% end %>
   <div class="contextual">
@@ -12,7 +12,7 @@
 <% end %>
 
 <h2><%= l(:label_secret_santa_players) %></h2>
-<% unless SecretSanta::Player.exists?(id: User.current.id) %>
+<% unless @current_user_registered %>
   <h3><%= l(:hint_create_member) %></h3>
   <div class="contextual">
     <%= link_to l(:button_create_member), new_secret_santa_player_path, class: 'icon icon-add' %>
