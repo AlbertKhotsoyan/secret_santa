@@ -27,3 +27,5 @@ ko:
   hint_template_variables: '사용 가능한 변수: ((Giver_name)), ((Receiver_name)), ((Receiver_preferred_gifts)), ((Receiver_avoid_these_gifts))'
 
   button_create_member: '참가자 생성'
+
+  text_secret_santa_default_message: "안녕하세요 ((Giver_name))님,\n\n((Receiver_name))님을 위한 선물을 준비해 주세요.\n\n수령인이 선호하는 선물:\n((Receiver_preferred_gifts))\n\n수령인이 피하고 싶은 선물:\n((Receiver_avoid_these_gifts))"

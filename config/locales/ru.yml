@@ -27,3 +27,5 @@ ru:
   hint_template_variables: 'Возможные переменные: ((Giver_name)), ((Receiver_name)), ((Receiver_preferred_gifts)), ((Receiver_avoid_these_gifts))'
 
   button_create_member: 'Создать участника'
+
+  text_secret_santa_default_message: "Привет, ((Giver_name))!\n\nВы готовите подарок для ((Receiver_name)).\n\nПолучатель предпочитает:\n((Receiver_preferred_gifts))\n\nПолучатель предпочел бы не получать:\n((Receiver_avoid_these_gifts))"

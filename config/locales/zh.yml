@@ -27,3 +27,5 @@ zh:
   hint_template_variables: '可用变量：((Giver_name)), ((Receiver_name)), ((Receiver_preferred_gifts)), ((Receiver_avoid_these_gifts))'
 
   button_create_member: '创建参与者'
+
+  text_secret_santa_default_message: "您好 ((Giver_name))，\n\n请为 ((Receiver_name)) 准备一份礼物。\n\n接收者希望收到的礼物：\n((Receiver_preferred_gifts))\n\n接收者不希望收到的礼物：\n((Receiver_avoid_these_gifts))"

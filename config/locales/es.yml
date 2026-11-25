@@ -27,3 +27,5 @@ es:
   hint_template_variables: 'Variables posibles: ((Giver_name)), ((Receiver_name)), ((Receiver_preferred_gifts)), ((Receiver_avoid_these_gifts))'
 
   button_create_member: 'Crear un participante'
+
+  text_secret_santa_default_message: "Hola ((Giver_name)),\n\nDebes preparar un regalo para ((Receiver_name)).\n\nEl destinatario prefiere:\n((Receiver_preferred_gifts))\n\nEl destinatario prefiere evitar:\n((Receiver_avoid_these_gifts))"

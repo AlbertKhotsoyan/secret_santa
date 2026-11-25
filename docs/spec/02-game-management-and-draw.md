@@ -20,7 +20,8 @@ Enable Redmine administrators to conduct a complete Secret Santa draw and notify
 
 ### US-1 (`P1` — Critical / MVP): Creating and Managing a Secret Santa Game
 
-* **Given** a logged-in Redmine administrator on the Secret Santa main page, **When** they click "Create" in the games section and submit a game with a non-empty subject and an optional letter body, **Then** the game is saved and the administrator is redirected to the game's details page with a creation success notice.
+* **Given** a logged-in Redmine administrator on the Secret Santa main page, **When** they click "Create" in the games section to open the new game form, **Then** the subject field is empty and the letter body textarea is pre-filled with a localized default template containing all four template variables (`((Giver_name))`, `((Receiver_name))`, `((Receiver_preferred_gifts))`, `((Receiver_avoid_these_gifts))`).
+* **Given** a logged-in Redmine administrator on the new game form, **When** they submit a game with a non-empty subject and an optional letter body (using the pre-filled default template, modifying it, or clearing it), **Then** the game is saved and the administrator is redirected to the game's details page with a creation success notice.
 * **Given** a logged-in non-administrator user on the Secret Santa main page, **When** they view the page or attempt to access any game URL directly, **Then** the games section is not rendered on the main page and any direct request to a game endpoint redirects to the Secret Santa main page.
 
 ### US-2 (`P1` — Critical / MVP): Running the Secret Santa Draw
@@ -44,7 +45,7 @@ Enable Redmine administrators to conduct a complete Secret Santa draw and notify
 ## 5. Functional Requirements and Business Rules
 
 * **FR-101 (Administrator-Only Access):** Only authenticated Redmine administrators may view the games section on the dashboard or execute any game action (`show`, `new`, `create`, `edit`, `update`, `destroy`, `draw`, `send_emails`). Authenticated non-administrators attempting to invoke any game action are redirected to the Secret Santa main page. Unauthenticated users are redirected to the login page.
-* **FR-102 (Game Validation and Ordering):** A game requires a non-empty subject (`name`). The letter body (`message`) is optional and supports Redmine wiki formatting. On the Secret Santa main page, games are listed in descending order of creation timestamp, or a "No data to display" message is shown when no games exist.
+* **FR-102 (Game Validation, Default Letter Template, and Ordering):** A game requires a non-empty subject (`name`). The letter body (`message`) is optional and supports Redmine wiki formatting. When opening the new game form (`new`), the subject (`name`) is blank and the letter body (`message`) is pre-filled with a localized default template (`text_secret_santa_default_message`) containing the four placeholders (`((Giver_name))`, `((Receiver_name))`, `((Receiver_preferred_gifts))`, `((Receiver_avoid_these_gifts))`). The administrator may keep, edit, or clear the pre-filled message before saving; if submission fails validation (e.g., blank subject), the form re-renders preserving whatever message value the administrator submitted. On the Secret Santa main page, games are listed in descending order of creation timestamp, or a "No data to display" message is shown when no games exist.
 * **FR-103 (Minimum Participants for Draw):** A draw requires at least 2 registered participants in the system. If fewer than 2 participants exist, the draw is aborted with a localized error (`error_not_enough_players`).
 * **FR-104 (Single-Cycle Derangement Draw Algorithm):** When a draw runs with $N \ge 2$ registered participants:
   1. All registered participants are randomly shuffled.
@@ -71,7 +72,7 @@ Represents a Secret Santa event managed by a Redmine administrator.
 |-----------|------------------------------------------|
 | Identifier (`id`) | Auto-incremented primary identifier. |
 | Subject (`name`) | Required string (`null: false`). Used as the game's display title in the UI and as the email subject template (supports template placeholders). |
-| Letter (`message`) | Optional text (`nullable`). Used as the email body template with wiki formatting and template placeholders. |
+| Letter (`message`) | Optional text (`nullable`). Used as the email body template with wiki formatting and template placeholders. Pre-filled with a localized default template (`text_secret_santa_default_message`) on the new game creation form. |
 | Timestamps (`created_at`, `updated_at`) | Creation and modification timestamps. Used to order games from newest to oldest. |
 
 ### Assignment (`Assignment`)
@@ -90,7 +91,8 @@ Represents a directed pairing of a gift giver and a gift receiver within a speci
 
 * **Draw with 0 or 1 registered participant:** Draw raises an insufficient-participants condition, leaves existing assignments untouched, and displays `error_not_enough_players`.
 * **Receiver has blank or whitespace-only gift preferences:** Placeholders `((Receiver_preferred_gifts))` and `((Receiver_avoid_these_gifts))` evaluate to `-` in the generated email so the recipient never sees raw placeholder tokens or empty gaps.
-* **Game with empty letter body (`message` is `nil` or empty):** Email delivery still succeeds without error, rendering an empty formatted body and substituting placeholders in the subject line.
+* **Game with empty letter body (`message` is `nil` or empty):** If the administrator explicitly clears the pre-filled default letter template before saving, the game saves with an empty `message`, and email delivery still succeeds without error, rendering an empty formatted body and substituting placeholders in the subject line.
+* **Validation failure after editing or clearing default letter body:** If the administrator modifies or clears the pre-filled `message` and submits with a blank `name`, the re-rendered `new` form preserves the submitted `message` value rather than overwriting it with the default template.
 * **Multiple games active simultaneously:** Assignments are scoped to a specific game; running a draw or deleting one game does not alter assignments belonging to another game.
 * **Non-existent game ID:** Requesting `show`, `edit`, `update`, `destroy`, `draw`, or `send_emails` for a non-existent game ID raises a record-not-found error.
 * **Unexpected exception during draw:** If any unexpected runtime or database error occurs while creating assignments, the controller catches the exception and displays a localized failure prefix followed by the error message in `flash[:error]`.
@@ -120,7 +122,7 @@ Represents a directed pairing of a gift giver and a gift receiver within a speci
 ## 10. Test Scenarios
 
 1. **Administrator access control (`FR-101`):** Non-admin user requesting any action on `SecretSantaGamesController` (`show`, `new`, `create`, `edit`, `update`, `destroy`, `draw`, `send_emails`) is redirected to `/secret_santa`.
-2. **Game creation and validation (`FR-102`):** Administrator creates a game with a valid `name` and `message` (succeeds and redirects to game show page); submitting an empty `name` fails validation and re-renders `new`.
+2. **New game form default message and game creation/validation (`FR-102`):** Administrator requesting `GET /secret_santa_games/new` sees the letter textarea pre-filled with the localized default template (`text_secret_santa_default_message`) containing `((Giver_name))`, `((Receiver_name))`, `((Receiver_preferred_gifts))`, and `((Receiver_avoid_these_gifts))`, and an empty subject (`name`); creating a game with a valid `name` and `message` succeeds and redirects to the game show page; submitting an empty `name` fails validation and re-renders `new` preserving the submitted `message`.
 3. **Draw blocked with fewer than 2 participants (`FR-103`):** With 0 or 1 registered participant, `POST /secret_santa_games/:id/draw` creates 0 assignments and sets `flash[:error]` to `error_not_enough_players`.
 4. **Draw creates valid cyclic derangement with 2+ participants (`FR-104`):** With $N \ge 2$ registered participants, `POST /secret_santa_games/:id/draw` creates exactly $N$ assignments where the set of givers equals the set of receivers, equals all $N$ participants, and no assignment has `giver_id == receiver_id`.
 5. **Re-running draw replaces previous assignments (`FR-104`):** Running `draw` a second time after adding a new participant replaces the old assignments with a new set of $N + 1$ assignments without duplicate `(game, giver)` pairs.

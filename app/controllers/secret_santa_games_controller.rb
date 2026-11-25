@@ -13,7 +13,7 @@ class SecretSantaGamesController < ApplicationController
   end
 
   def new
-    @game = SecretSanta::Game.new
+    @game = SecretSanta::Game.new(message: l(:text_secret_santa_default_message))
     render('secret_santa/games/new')
   end
 

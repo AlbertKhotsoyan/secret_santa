@@ -27,3 +27,5 @@ ja:
   hint_template_variables: '利用可能な変数: ((Giver_name)), ((Receiver_name)), ((Receiver_preferred_gifts)), ((Receiver_avoid_these_gifts))'
 
   button_create_member: '参加者を作成'
+
+  text_secret_santa_default_message: "こんにちは ((Giver_name)) さん、\n\n((Receiver_name)) さんへのプレゼントを用意してください。\n\n受け取る人の希望:\n((Receiver_preferred_gifts))\n\n受け取る人が避けたいもの:\n((Receiver_avoid_these_gifts))"

@@ -27,3 +27,5 @@ de:
   hint_template_variables: 'Mögliche Variablen: ((Giver_name)), ((Receiver_name)), ((Receiver_preferred_gifts)), ((Receiver_avoid_these_gifts))'
 
   button_create_member: 'Teilnehmer erstellen'
+
+  text_secret_santa_default_message: "Hallo ((Giver_name)),\n\ndu bereitest ein Geschenk für ((Receiver_name)) vor.\n\nDer Empfänger wünscht sich:\n((Receiver_preferred_gifts))\n\nDer Empfänger möchte lieber nicht erhalten:\n((Receiver_avoid_these_gifts))"

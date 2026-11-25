@@ -1,5 +1,9 @@
 # Changelog
 
+## [Unreleased]
+### Added
+- Default letter message template with template variables when creating a new game [];
+
 ## [1.0.2] - 2026-11-25
 ### Improved
 - Refactored models, controllers, mailer, helpers, views, Minitest test suite, and 11-language localizations to comply with Redmine plugin standards;

@@ -118,4 +118,33 @@ class SecretSantaGamesControllerTest < SecretSanta::ControllerTestCase
 
     assert_response :not_found
   end
+
+  # SPEC: docs/spec/02-game-management-and-draw.md (FR-102)
+  test 'new game form pre-fills default letter template with placeholders and preserves submitted message on validation failure' do
+    login_as(ADMIN_USER_ID)
+
+    get :new
+
+    assert_response :success
+    default_message = I18n.t(:text_secret_santa_default_message)
+
+    assert_includes default_message, SecretSantaMailer::GIVER_NAME_PLACEHOLDER
+    assert_includes default_message, SecretSantaMailer::RECEIVER_NAME_PLACEHOLDER
+    assert_includes default_message, SecretSantaMailer::PREFERRED_GIFTS_PLACEHOLDER
+    assert_includes default_message, SecretSantaMailer::AVOID_GIFTS_PLACEHOLDER
+    assert_select 'input[name="secret_santa_game[name]"]:not([value])'
+    assert_select 'textarea[name="secret_santa_game[message]"]', text: default_message
+
+    assert_no_difference('SecretSanta::Game.count') do
+      post :create, params: {
+        secret_santa_game: {
+          name: '',
+          message: 'Custom edited message ((Giver_name))'
+        }
+      }
+    end
+
+    assert_response :success
+    assert_select 'textarea[name="secret_santa_game[message]"]', text: 'Custom edited message ((Giver_name))'
+  end
 end
